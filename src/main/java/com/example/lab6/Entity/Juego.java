@@ -1,10 +1,11 @@
 package com.example.lab6.Entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "juegos")
-public class Juego {
+public class Juego implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idjuego", nullable = false)
