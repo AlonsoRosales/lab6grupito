@@ -23,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/juego/**").hasAnyAuthority("ADMIN")
                 .antMatchers("/distribuidora/**").hasAnyAuthority("ADMIN");
         http.httpBasic();
-
+        //Solo se admite solicitudes de admin
     }
 
     @Autowired
