@@ -12,7 +12,7 @@ public class Paises implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idpais", nullable = false)
-    private Integer id;
+    private Integer idpais;
 
     @Column(name = "iso", length = 2)
     private String iso;
@@ -36,11 +36,11 @@ public class Paises implements Serializable {
         this.iso = iso;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdpais() {
+        return idpais;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdpais(Integer idpais) {
+        this.idpais = idpais;
     }
 }

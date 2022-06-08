@@ -23,37 +23,37 @@ public class DistribuidoraController {
     DistribuidoraRepository distribuidoraRepository;
 
     @GetMapping(value = "/listar",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity listardistribuidoras(){
+    public ResponseEntity<HashMap<String, Object>> listardistribuidoras(){
         HashMap<String, Object> responsemap = new HashMap<>();
         List<Distribuidora> distribuidoraList = distribuidoraRepository.findAll();
         responsemap.put("estado","ok");
         responsemap.put("distribuidoras",distribuidoraList);
-        return new ResponseEntity(responsemap, HttpStatus.OK);
+        return ResponseEntity.ok(responsemap);
     }
 
     @GetMapping(value = {"/obtener/{id}", "/obtener"},produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity obtener(@PathVariable("id") Optional<String> idStr){
+    public ResponseEntity<HashMap<String, Object>> obtener(@PathVariable("id") Optional<String> idStr){
         HashMap<String, Object> responsemap = new HashMap<>();
         try{
             Integer id = Integer.parseInt(idStr.get());
             if(distribuidoraRepository.existsById(id)){
                 responsemap.put("estado","ok");
-                responsemap.put("msg",distribuidoraRepository.findById(id).get());
-                return new ResponseEntity(responsemap, HttpStatus.OK);
+                responsemap.put("distribuidora",distribuidoraRepository.findById(id).get());
+                return ResponseEntity.ok(responsemap);
             }else{
                 responsemap.put("estado","error");
                 responsemap.put("msg","No se encuentra distribuidora con el id solicitado");
-                return new ResponseEntity(responsemap, HttpStatus.BAD_REQUEST);
+                return ResponseEntity.badRequest().body(responsemap);
             }
         }catch(Exception e){
             responsemap.put("estado","error");
             responsemap.put("msg","Se envio un id invalido");
-            return new ResponseEntity(responsemap, HttpStatus.BAD_REQUEST);
+            return ResponseEntity.badRequest().body(responsemap);
         }
     }
 
     @PutMapping(value = "/editar",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity editar(@RequestBody Distribuidora distribuidora){
+    public ResponseEntity<HashMap<String, Object>> editar(@RequestBody Distribuidora distribuidora){
         HashMap<String, Object> responsemap = new HashMap<>();
         try{
             if(distribuidoraRepository.existsById(distribuidora.getId())){
@@ -62,33 +62,34 @@ public class DistribuidoraController {
                 distribuidora1.get().setFundacion(distribuidora.getFundacion());
                 distribuidora1.get().setNombre(distribuidora.getNombre());
                 distribuidora1.get().setWeb(distribuidora.getWeb());
+                distribuidora1.get().setIdsede(distribuidora.getIdsede());
                 distribuidoraRepository.save(distribuidora1.get());
                 responsemap.put("estado","ok");
                 responsemap.put("msg","Se edito correctamente la distribuidora");
-                return new ResponseEntity(responsemap, HttpStatus.OK);
+                return ResponseEntity.ok(responsemap);
             }else{
                 responsemap.put("estado","error");
                 responsemap.put("msg","Se envio un id invalido");
-                return new ResponseEntity(responsemap, HttpStatus.BAD_REQUEST);
+                return ResponseEntity.badRequest().body(responsemap);
             }
         }catch (Exception e){
             responsemap.put("estado","error");
             responsemap.put("msg","El id debe ser un numero");
-            return new ResponseEntity(responsemap, HttpStatus.BAD_REQUEST);
+            return ResponseEntity.badRequest().body(responsemap);
         }
     }
 
     @PostMapping(value = "/nueva",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity nueva(@RequestBody Distribuidora distribuidora){
+    public ResponseEntity<HashMap<String, Object>> nueva(@RequestBody Distribuidora distribuidora){
         HashMap<String, Object> responsemap = new HashMap<>();
         distribuidoraRepository.save(distribuidora);
         responsemap.put("estado","ok");
         responsemap.put("msg","Distribuidora registrada correctamente");
-        return new ResponseEntity(responsemap,HttpStatus.OK);
+        return ResponseEntity.status(HttpStatus.CREATED).body(responsemap);
     }
 
     @DeleteMapping(value = {"/borrar/{id}", "/borrar"},produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity borrar(@PathVariable("id") Optional<String> idStr){
+    public ResponseEntity<HashMap<String, Object>> borrar(@PathVariable("id") Optional<String> idStr){
         HashMap<String, Object> responsemap = new HashMap<>();
         try{
             Integer id = Integer.parseInt(idStr.get());
@@ -96,16 +97,16 @@ public class DistribuidoraController {
                 distribuidoraRepository.deleteById(id);
                 responsemap.put("estado","ok");
                 responsemap.put("msg","Distribuidora eliminada exitosamente");
-                return new ResponseEntity(responsemap, HttpStatus.BAD_REQUEST);
+                return ResponseEntity.ok(responsemap);
             }else{
                 responsemap.put("estado","error");
                 responsemap.put("msg","No se ha encontrado distribuidora con ese ID");
-                return new ResponseEntity(responsemap, HttpStatus.BAD_REQUEST);
+                return ResponseEntity.badRequest().body(responsemap);
             }
         }catch (Exception e){
             responsemap.put("estado","error");
             responsemap.put("msg","El id debe ser un numero");
-            return new ResponseEntity(responsemap, HttpStatus.BAD_REQUEST);
+            return ResponseEntity.badRequest().body(responsemap);
         }
     }
 }

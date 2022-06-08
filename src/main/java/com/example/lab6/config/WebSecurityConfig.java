@@ -21,7 +21,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests()
                 .antMatchers("/juego/**").hasAnyAuthority("ADMIN")
-                .antMatchers("/distribuidora/**").hasAnyAuthority("ADMIN");
+                .antMatchers("/distribuidora/**").hasAnyAuthority("ADMIN")
+                .antMatchers("/paises").hasAnyAuthority("ADMIN");
+
         http.httpBasic();
         //Solo se admite solicitudes de admin
     }

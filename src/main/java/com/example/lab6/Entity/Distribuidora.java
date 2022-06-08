@@ -26,14 +26,15 @@ public class Distribuidora implements Serializable {
     @Column(name = "web", length = 200)
     private String web;
 
+    @ManyToOne
     @JoinColumn(name = "idsede")
-    private int idsede;
+    private Paises idsede;
 
-    public int getIdsede() {
+    public Paises getIdsede() {
         return idsede;
     }
 
-    public void setIdsede(int idsede) {
+    public void setIdsede(Paises idsede) {
         this.idsede = idsede;
     }
 
