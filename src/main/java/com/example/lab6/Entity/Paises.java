@@ -1,10 +1,10 @@
-package Entity;
+package com.example.lab6.Entity;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "paises")
-public class Paise {
+public class Paises {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idpais", nullable = false)

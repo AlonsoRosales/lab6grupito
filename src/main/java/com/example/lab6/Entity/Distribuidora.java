@@ -1,4 +1,4 @@
-package Entity;
+package com.example.lab6.Entity;
 
 import javax.persistence.*;
 
@@ -22,14 +22,15 @@ public class Distribuidora {
     @Column(name = "web", length = 200)
     private String web;
 
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idsede")
-    private int idsede;
+    private Paises idsede;
 
-    public int getIdsede() {
+    public Paises getIdsede() {
         return idsede;
     }
 
-    public void setIdsede(int idsede) {
+    public void setIdsede(Paises idsede) {
         this.idsede = idsede;
     }
 

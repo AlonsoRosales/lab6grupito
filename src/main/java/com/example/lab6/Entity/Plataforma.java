@@ -1,13 +1,13 @@
-package Entity;
+package com.example.lab6.Entity;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "generos")
-public class Genero {
+@Table(name = "plataformas")
+public class Plataforma {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idgenero", nullable = false)
+    @Column(name = "idplataforma", nullable = false)
     private Integer id;
 
     @Column(name = "nombre", length = 50)
