@@ -26,15 +26,14 @@ public class Distribuidora implements Serializable {
     @Column(name = "web", length = 200)
     private String web;
 
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idsede")
-    private Paises idsede;
+    private int idsede;
 
-    public Paises getIdsede() {
+    public int getIdsede() {
         return idsede;
     }
 
-    public void setIdsede(Paises idsede) {
+    public void setIdsede(int idsede) {
         this.idsede = idsede;
     }
 
