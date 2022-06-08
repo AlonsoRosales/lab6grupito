@@ -1,9 +1,8 @@
 package com.example.lab6.Controller;
 
-import Entity.Juego;
+import com.example.lab6.Entity.eliminame;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -16,18 +15,18 @@ public class JuegosController {
 
 
     @GetMapping("/juego")
-    public List<Juego> listarJuegos(){
+    public List<eliminame.Juego> listarJuegos(){
         return ;
     }
 
     @PostMapping("/juego")
-    public ResponseEntity<HashMap<String, Object>> guardarJuego(@RequestBody Juego juego){
+    public ResponseEntity<HashMap<String, Object>> guardarJuego(@RequestBody eliminame.Juego juego){
 
     }
 
 
     @PutMapping("/juego")
-    public ResponseEntity<HashMap<String, Object>> actualizarJuego(@RequestBody Juego juego){
+    public ResponseEntity<HashMap<String, Object>> actualizarJuego(@RequestBody eliminame.Juego juego){
 
     }
 
