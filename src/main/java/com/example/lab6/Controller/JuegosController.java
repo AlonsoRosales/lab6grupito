@@ -26,7 +26,7 @@ public class JuegosController {
         try {
             Optional<Juego> optionalJuego ;
             if (optionalJuego.isPresent()){
-                responseJson.put("result")
+                responseJson.put("result", );
             }
         }catch (NumberFormatException e){
             responseJson.put("msg", "el ID de ser un número entero postivo");
