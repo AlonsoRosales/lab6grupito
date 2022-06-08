@@ -1,4 +1,4 @@
-package Controller;
+package com.example.lab6.Controller;
 
 import Entity.Juego;
 import org.springframework.beans.factory.annotation.Autowired;
