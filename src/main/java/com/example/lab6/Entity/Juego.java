@@ -23,51 +23,47 @@ public class Juego implements Serializable {
     @Column(name = "image", length = 400)
     private String image;
 
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idgenero")
-    private Genero idgenero;
+    private Integer idgenero;
 
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idplataforma")
-    private Plataforma idplataforma;
+    private Integer idplataforma;
 
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ideditora")
-    private Editora ideditora;
+    private Integer ideditora;
 
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "iddistribuidora")
-    private Distribuidora iddistribuidora;
+    private Integer iddistribuidora;
 
-    public Distribuidora getIddistribuidora() {
+    public Integer getIddistribuidora() {
         return iddistribuidora;
     }
 
-    public void setIddistribuidora(Distribuidora iddistribuidora) {
+    public void setIddistribuidora(Integer iddistribuidora) {
         this.iddistribuidora = iddistribuidora;
     }
 
-    public Editora getIdeditora() {
+    public Integer getIdeditora() {
         return ideditora;
     }
 
-    public void setIdeditora(Editora ideditora) {
+    public void setIdeditora(Integer ideditora) {
         this.ideditora = ideditora;
     }
 
-    public Plataforma getIdplataforma() {
+    public Integer getIdplataforma() {
         return idplataforma;
     }
 
-    public void setIdplataforma(Plataforma idplataforma) {
+    public void setIdplataforma(Integer idplataforma) {
         this.idplataforma = idplataforma;
     }
 
-    public Genero getIdgenero() {
+    public Integer getIdgenero() {
         return idgenero;
     }
 
-    public void setIdgenero(Genero idgenero) {
+    public void setIdgenero(Integer idgenero) {
         this.idgenero = idgenero;
     }
 
