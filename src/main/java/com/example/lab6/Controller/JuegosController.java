@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class JuegosController {
@@ -21,7 +22,15 @@ public class JuegosController {
 
     @PostMapping("/juego")
     public ResponseEntity<HashMap<String, Object>> guardarJuego(@RequestBody Juego juego){
-
+        HashMap<String,Object> responseJson = new HashMap<>();
+        try {
+            Optional<Juego> optionalJuego ;
+            if (optionalJuego.isPresent()){
+                responseJson.put("result")
+            }
+        }catch (NumberFormatException e){
+            responseJson.put("msg", "el ID de ser un número entero postivo");
+        }
     }
 
 
@@ -32,7 +41,13 @@ public class JuegosController {
 
     @DeleteMapping("/juego/{id}")
     public ResponseEntity<HashMap<String, Object>> borrarJuego(@PathVariable("id") String idStr){
+         HashMap<String, Object> responseMap = new HashMap<>();
 
+        try {
+            int id = Integer.parseInt(idStr);
+        }catch (NumberFormatException e){
+
+        }
 
     }
 
