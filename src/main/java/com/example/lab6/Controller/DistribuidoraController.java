@@ -32,10 +32,10 @@ public class DistribuidoraController {
     }
 
     @GetMapping(value = {"/obtener/{id}", "/obtener"},produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<HashMap<String, Object>> obtener(@PathVariable("id") Optional<String> idStr){
+    public ResponseEntity<HashMap<String, Object>> obtener(@PathVariable("id") String idStr){
         HashMap<String, Object> responsemap = new HashMap<>();
         try{
-            Integer id = Integer.parseInt(idStr.get());
+            Integer id = Integer.parseInt(idStr);
             if(distribuidoraRepository.existsById(id)){
                 responsemap.put("estado","ok");
                 responsemap.put("distribuidora",distribuidoraRepository.findById(id).get());
@@ -43,12 +43,12 @@ public class DistribuidoraController {
             }else{
                 responsemap.put("estado","error");
                 responsemap.put("msg","No se encuentra distribuidora con el id solicitado");
-                return ResponseEntity.badRequest().body(responsemap);
+                return ResponseEntity.ok(responsemap);
             }
         }catch(Exception e){
             responsemap.put("estado","error");
             responsemap.put("msg","Se envio un id invalido");
-            return ResponseEntity.badRequest().body(responsemap);
+            return ResponseEntity.ok(responsemap);
         }
     }
 
@@ -70,12 +70,12 @@ public class DistribuidoraController {
             }else{
                 responsemap.put("estado","error");
                 responsemap.put("msg","Se envio un id invalido");
-                return ResponseEntity.badRequest().body(responsemap);
+                return ResponseEntity.ok(responsemap);
             }
         }catch (Exception e){
             responsemap.put("estado","error");
             responsemap.put("msg","El id debe ser un numero");
-            return ResponseEntity.badRequest().body(responsemap);
+            return ResponseEntity.ok(responsemap);
         }
     }
 
