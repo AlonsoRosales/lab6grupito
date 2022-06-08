@@ -30,6 +30,7 @@ public class DistribuidoraController {
     @GetMapping(value = {"/obtener/{id}", "/obtener"},produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity listar(){
         HashMap<String, Object> responsemap = new HashMap<>();
+
         return new ResponseEntity(responsemap, HttpStatus.OK);
     }
 
