@@ -23,51 +23,50 @@ public class Juego implements Serializable {
     @Column(name = "image", length = 400)
     private String image;
 
-    @ManyToOne
+
     @JoinColumn(name = "idgenero")
-    private Genero idgenero;
+    private Integer idgenero;
 
-    @ManyToOne
+
     @JoinColumn(name = "idplataforma")
-    private Plataforma idplataforma;
+    private Integer idplataforma;
 
-    @ManyToOne
+
     @JoinColumn(name = "ideditora")
-    private Editora ideditora;
+    private Integer ideditora;
 
-    @ManyToOne
     @JoinColumn(name = "iddistribuidora")
-    private Distribuidora iddistribuidora;
+    private Integer iddistribuidora;
 
-    public Genero getIdgenero() {
+    public Integer getIdgenero() {
         return idgenero;
     }
 
-    public void setIdgenero(Genero idgenero) {
+    public void setIdgenero(Integer idgenero) {
         this.idgenero = idgenero;
     }
 
-    public Plataforma getIdplataforma() {
+    public Integer getIdplataforma() {
         return idplataforma;
     }
 
-    public void setIdplataforma(Plataforma idplataforma) {
+    public void setIdplataforma(Integer idplataforma) {
         this.idplataforma = idplataforma;
     }
 
-    public Editora getIdeditora() {
+    public Integer getIdeditora() {
         return ideditora;
     }
 
-    public void setIdeditora(Editora ideditora) {
+    public void setIdeditora(Integer ideditora) {
         this.ideditora = ideditora;
     }
 
-    public Distribuidora getIddistribuidora() {
+    public Integer getIddistribuidora() {
         return iddistribuidora;
     }
 
-    public void setIddistribuidora(Distribuidora iddistribuidora) {
+    public void setIddistribuidora(Integer iddistribuidora) {
         this.iddistribuidora = iddistribuidora;
     }
 
