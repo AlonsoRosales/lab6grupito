@@ -23,48 +23,52 @@ public class Juego implements Serializable {
     @Column(name = "image", length = 400)
     private String image;
 
+    @ManyToOne
     @JoinColumn(name = "idgenero")
-    private Integer idgenero;
+    private Genero idgenero;
 
+    @ManyToOne
     @JoinColumn(name = "idplataforma")
-    private Integer idplataforma;
+    private Plataforma idplataforma;
 
+    @ManyToOne
     @JoinColumn(name = "ideditora")
-    private Integer ideditora;
+    private Editora ideditora;
 
+    @ManyToOne
     @JoinColumn(name = "iddistribuidora")
-    private Integer iddistribuidora;
+    private Distribuidora iddistribuidora;
 
-    public Integer getIddistribuidora() {
-        return iddistribuidora;
-    }
-
-    public void setIddistribuidora(Integer iddistribuidora) {
-        this.iddistribuidora = iddistribuidora;
-    }
-
-    public Integer getIdeditora() {
-        return ideditora;
-    }
-
-    public void setIdeditora(Integer ideditora) {
-        this.ideditora = ideditora;
-    }
-
-    public Integer getIdplataforma() {
-        return idplataforma;
-    }
-
-    public void setIdplataforma(Integer idplataforma) {
-        this.idplataforma = idplataforma;
-    }
-
-    public Integer getIdgenero() {
+    public Genero getIdgenero() {
         return idgenero;
     }
 
-    public void setIdgenero(Integer idgenero) {
+    public void setIdgenero(Genero idgenero) {
         this.idgenero = idgenero;
+    }
+
+    public Plataforma getIdplataforma() {
+        return idplataforma;
+    }
+
+    public void setIdplataforma(Plataforma idplataforma) {
+        this.idplataforma = idplataforma;
+    }
+
+    public Editora getIdeditora() {
+        return ideditora;
+    }
+
+    public void setIdeditora(Editora ideditora) {
+        this.ideditora = ideditora;
+    }
+
+    public Distribuidora getIddistribuidora() {
+        return iddistribuidora;
+    }
+
+    public void setIddistribuidora(Distribuidora iddistribuidora) {
+        this.iddistribuidora = iddistribuidora;
     }
 
     public String getImage() {
